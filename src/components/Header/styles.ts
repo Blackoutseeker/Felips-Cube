@@ -7,8 +7,6 @@ export const HeaderContainer = styled.View`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-left: 16px;
-  padding-right: 16px;
 `
 
 export const DrawerButton = styled.TouchableOpacity`

@@ -1,24 +1,34 @@
 import type { FC } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import Introduction from '@screens/introduction'
+import { routes } from '@utils/constants'
+import Drawer from '@components/Drawer'
+import Header from '@components/Header'
+import Main from '@screens/main'
+import { getScreenProps } from '@services/screen'
 
-const Drawer = createDrawerNavigator()
+const DrawerNavigator = createDrawerNavigator()
+
+const initialRouteName = routes[0]
+
+const renderDrawerScreens = routes.map(route => (
+  <DrawerNavigator.Screen key={route} name={route}>
+    {() => <Main screenProps={getScreenProps(route)} />}
+  </DrawerNavigator.Screen>
+))
 
 const Router: FC = () => {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Introdução"
+      <DrawerNavigator.Navigator
+        initialRouteName={initialRouteName}
+        drawerContent={() => <Drawer />}
         screenOptions={{
-          headerShown: false,
-          drawerContentStyle: {
-            backgroundColor: '#1e1e1e'
-          }
+          header: () => <Header />
         }}
       >
-        <Drawer.Screen name="Introdução" component={Introduction} />
-      </Drawer.Navigator>
+        {renderDrawerScreens}
+      </DrawerNavigator.Navigator>
     </NavigationContainer>
   )
 }

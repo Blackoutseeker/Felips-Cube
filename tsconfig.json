@@ -24,5 +24,6 @@
     "jsx": "preserve",
     "incremental": true
   },
+  "include": ["global.d.ts", "./**/*"],
   "exclude": ["node_modules", "babel.config.js", "metro.config.js"]
 }

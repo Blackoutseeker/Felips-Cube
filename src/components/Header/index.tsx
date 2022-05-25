@@ -11,7 +11,7 @@ const Header: FC = () => {
   }
 
   return (
-    <HeaderContainer>
+    <HeaderContainer style={{ elevation: 4 }}>
       <DrawerButton onPress={openDrawer}>
         <FontAwesome5 name="bars" size={20} color="#fff" />
       </DrawerButton>
